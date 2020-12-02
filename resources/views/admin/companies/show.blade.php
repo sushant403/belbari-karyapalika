@@ -44,24 +44,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.company.fields.city') }}
-                        </th>
-                        <td>
-                            {{ $company->city->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Categories
-                        </th>
-                        <td>
-                            @foreach($company->categories as $id => $categories)
-                                <span class="label label-info label-many">{{ $categories->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.company.fields.logo') }}
                         </th>
                         <td>

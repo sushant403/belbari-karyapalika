@@ -61,14 +61,6 @@
                             {{ $company->registration ?? '' }}
                         </td>
                         <td>
-                            {{ $company->city->name ?? '' }}
-                        </td>
-                        <td>
-                            @foreach($company->categories as $key => $item)
-                            <span class="badge badge-info">{{ $item->name }}</span>
-                            @endforeach
-                        </td>
-                        <td>
                             @if($company->logo)
                             <a href="{{ $company->logo->getUrl() }}" target="_blank">
                                 <img src="{{ $company->logo->getUrl('thumb') }}" width="50px" height="50px">

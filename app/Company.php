@@ -40,6 +40,16 @@ class Company extends Model implements HasMedia
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function getLogoAttribute()
     {
         $file = $this->getMedia('logo')->last();
@@ -52,25 +62,25 @@ class Company extends Model implements HasMedia
         return $file;
     }
 
-    public function scopeFilterByRequest($query, Request $request)
-    {
-        if ($request->input('city_id')) {
-            $query->where('city_id', $request->input('city_id'));
-        }
+    // public function scopeFilterByRequest($query, Request $request)
+    // {
+    //     if ($request->input('city_id')) {
+    //         $query->where('city_id', $request->input('city_id'));
+    //     }
 
-        if ($request->input('categories')) {
-            $query->whereHas(
-                'categories',
-                function ($query) use ($request) {
-                    $query->where('id', $request->input('categories'));
-                }
-            );
-        }
+    //     if ($request->input('categories')) {
+    //         $query->whereHas(
+    //             'categories',
+    //             function ($query) use ($request) {
+    //                 $query->where('id', $request->input('categories'));
+    //             }
+    //         );
+    //     }
 
-        if ($request->input('search')) {
-            $query->where('name', 'LIKE', '%' . $request->input('search') . '%');
-        }
+    //     if ($request->input('search')) {
+    //         $query->where('name', 'LIKE', '%' . $request->input('search') . '%');
+    //     }
 
-        return $query;
-    }
+    //     return $query;
+    // }
 }

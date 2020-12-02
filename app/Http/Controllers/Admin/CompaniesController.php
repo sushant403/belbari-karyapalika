@@ -31,17 +31,12 @@ class CompaniesController extends Controller
     {
         abort_if(Gate::denies('company_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::all()->pluck('name', 'id');
-
-        return view('admin.companies.create', compact('cities', 'categories'));
+        return view('admin.companies.create');
     }
 
     public function store(StoreCompanyRequest $request)
     {
         $company = Company::create($request->all());
-        $company->categories()->sync($request->input('categories', []));
 
         if ($request->input('logo', false)) {
             $company->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
@@ -60,13 +55,12 @@ class CompaniesController extends Controller
 
         $company->load('city', 'categories');
 
-        return view('admin.companies.edit', compact('cities', 'categories', 'company'));
+        return view('admin.companies.edit', compact('company'));
     }
 
     public function update(UpdateCompanyRequest $request, Company $company)
     {
         $company->update($request->all());
-        $company->categories()->sync($request->input('categories', []));
 
         if ($request->input('logo', false)) {
             if (!$company->logo || $request->input('logo') !== $company->logo->file_name) {
@@ -82,8 +76,6 @@ class CompaniesController extends Controller
     public function show(Company $company)
     {
         abort_if(Gate::denies('company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $company->load('city', 'categories');
 
         return view('admin.companies.show', compact('company'));
     }
