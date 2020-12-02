@@ -17,6 +17,8 @@ class CreateCompaniesTable extends Migration
 
             $table->string('registration')->nullable();
 
+            $table->string('phone')->nullable();
+
             $table->timestamps();
 
             $table->softDeletes();

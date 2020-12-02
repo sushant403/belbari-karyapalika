@@ -28,6 +28,7 @@ class Company extends Model implements HasMedia
     protected $fillable = [
         'name',
         'address',
+        'phone',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -37,16 +38,6 @@ class Company extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
-    }
-
-    public function city()
-    {
-        return $this->belongsTo(City::class, 'city_id');
-    }
-
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class);
     }
 
     public function getLogoAttribute()

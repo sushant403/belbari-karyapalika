@@ -115,7 +115,7 @@ return [
             'city_helper'        => '',
             'categories'         => 'Categories',
             'categories_helper'  => '',
-            'logo'               => 'Logo',
+            'logo'               => 'Client Photo',
             'logo_helper'        => '',
             'created_at'         => 'Created at',
             'created_at_helper'  => '',
