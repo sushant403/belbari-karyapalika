@@ -17,6 +17,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Custom CSS -->
@@ -58,7 +59,7 @@
                                 @guest
                                 <li style="margin-right: 5px">
                                     <a class="btn btn-primary text-white" href="{{ route('login') }}">
-                                        &nbsp; Officials Portal Login</a>
+                                        Officials Portal Login</a>
                                 </li>
                                 @else
                                 <li style="margin-right: 5px">
@@ -95,14 +96,14 @@
                         <div class="card-body">
                             <ul class="useful-link">
                                 <li>
-                                    <a href=""><i class="fa fa-adjust"></i>&nbsp;Advanced Search</a>
+                                    <a href="/admin"><i class="fa fa-adjust"></i>&nbsp;Advanced Search</a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa fa-anchor"></i>&nbsp;Add New
+                                    <a href="/admin/company"><i class="fa fa-anchor"></i>&nbsp;Add New
                                         Registration</a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa fa-archive"></i>&nbsp;Admin
+                                    <a href="{{ route('login') }}"><i class="fa fa-archive"></i>&nbsp;Admin
                                         Login</a>
                                 </li>
                             </ul>

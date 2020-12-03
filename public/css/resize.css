@@ -137,7 +137,7 @@
     .logo_sec img,
     .top_sec.sticky .logo_sec img {
         max-height: 100px;
-        float: right;
+        /* float: right; */
     }
     .right-box {
         width: auto;
@@ -151,7 +151,7 @@
         display: none;
     }
     .right-box ul li a {
-        background: #fff;
+        /* background: #fff; */
         padding: 5px 10px;
         border-radius: 4px;
     }
