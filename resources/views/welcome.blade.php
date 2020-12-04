@@ -85,6 +85,7 @@
         </header>
         <!-- /header -->
     </div>
+    <div class="clearfix"></div>
     <div class="mid_part">
         <div class="container">
             <div class="row">
@@ -99,7 +100,7 @@
                                     <a href="/admin"><i class="fa fa-adjust"></i>&nbsp;Advanced Search</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/company"><i class="fa fa-anchor"></i>&nbsp;Add New
+                                    <a href="/admin/companies/create"><i class="fa fa-anchor"></i>&nbsp;Add New
                                         Registration</a>
                                 </li>
                                 <li>
