@@ -1,15 +1,34 @@
 @extends('layouts.admin')
 @section('content')
-
+<style>
+    .form-control {
+        border: 1px solid #b2b2b2;
+         !important;
+    }
+</style>
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.client.title_singular') }}
+        {{-- {{ trans('global.create') }} {{ trans('cruds.client.title_singular') }} --}}
+        <b>Add New Registration</b>
     </div>
 
     <div class="card-body">
         <form action="{{ route("admin.clients.update", [$client->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <div class="form-group {{ $errors->has('registration') ? 'has-error' : '' }}">
+                <label for="registration">{{ trans('cruds.client.fields.registration') }} Number*</label>
+                <input type="text" id="registration" name="registration" class="form-control"
+                    value="{{ old('registration', isset($client) ? $client->registration : '') }}" required>
+                @if($errors->has('registration'))
+                <em class="invalid-feedback">
+                    {{ $errors->first('registration') }}
+                </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.client.fields.registration_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('cruds.client.fields.name') }}*</label>
                 <input type="text" id="name" name="name" class="form-control"
@@ -21,19 +40,6 @@
                 @endif
                 <p class="helper-block">
                     {{ trans('cruds.client.fields.name_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
-                <label for="slug">{{ trans('cruds.client.fields.slug') }}*</label>
-                <input type="text" id="slug" name="slug" class="form-control"
-                    value="{{ old('slug', isset($client) ? $client->slug : '') }}" required>
-                @if($errors->has('slug'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('slug') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.slug_helper') }}
                 </p>
             </div>
             <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
@@ -49,113 +55,56 @@
                     {{ trans('cruds.client.fields.address_helper') }}
                 </p>
             </div>
-            <div class="form-group {{ $errors->has('latitude') ? 'has-error' : '' }}">
-                <label for="latitude">{{ trans('cruds.client.fields.latitude') }}</label>
-                <input type="number" id="latitude" name="latitude" class="form-control"
-                    value="{{ old('latitude', isset($client) ? $client->latitude : '') }}" step="0.00000001">
-                @if($errors->has('latitude'))
+            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                <label for="phone">{{ trans('cruds.client.fields.phone') }}*</label>
+                <input type="number" id="phone" name="phone" class="form-control"
+                    value="{{ old('phone', isset($client) ? $client->phone : '') }}">
+                @if($errors->has('phone'))
                 <em class="invalid-feedback">
-                    {{ $errors->first('latitude') }}
+                    {{ $errors->first('phone') }}
                 </em>
                 @endif
                 <p class="helper-block">
-                    {{ trans('cruds.client.fields.latitude_helper') }}
+                    {{ trans('cruds.client.fields.phone_helper') }}
                 </p>
             </div>
-            <div class="form-group {{ $errors->has('longitude') ? 'has-error' : '' }}">
-                <label for="longitude">{{ trans('cruds.client.fields.longitude') }}</label>
-                <input type="number" id="longitude" name="longitude" class="form-control"
-                    value="{{ old('longitude', isset($client) ? $client->longitude : '') }}" step="0.00000001">
-                @if($errors->has('longitude'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('longitude') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.longitude_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
-                <label for="description">{{ trans('cruds.client.fields.description') }}</label>
-                <textarea id="description" name="description"
-                    class="form-control ">{{ old('description', isset($client) ? $client->description : '') }}</textarea>
-                @if($errors->has('description'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('description') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.description_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('features') ? 'has-error' : '' }}">
-                <label for="features">{{ trans('cruds.client.fields.features') }}</label>
-                <textarea id="features" name="features"
-                    class="form-control ">{{ old('features', isset($client) ? $client->features : '') }}</textarea>
-                @if($errors->has('features'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('features') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.features_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('people_minimum') ? 'has-error' : '' }}">
-                <label for="people_minimum">{{ trans('cruds.client.fields.people_minimum') }}</label>
-                <input type="number" id="people_minimum" name="people_minimum" class="form-control"
-                    value="{{ old('people_minimum', isset($client) ? $client->people_minimum : '') }}" step="1">
-                @if($errors->has('people_minimum'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('people_minimum') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.people_minimum_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('people_maximum') ? 'has-error' : '' }}">
-                <label for="people_maximum">{{ trans('cruds.client.fields.people_maximum') }}</label>
-                <input type="number" id="people_maximum" name="people_maximum" class="form-control"
-                    value="{{ old('people_maximum', isset($client) ? $client->people_maximum : '') }}" step="1">
-                @if($errors->has('people_maximum'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('people_maximum') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.people_maximum_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('price_per_hour') ? 'has-error' : '' }}">
-                <label for="price_per_hour">{{ trans('cruds.client.fields.price_per_hour') }}</label>
-                <input type="number" id="price_per_hour" name="price_per_hour" class="form-control"
-                    value="{{ old('price_per_hour', isset($client) ? $client->price_per_hour : '') }}" step="0.01">
-                @if($errors->has('price_per_hour'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('price_per_hour') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.price_per_hour_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('main_photo') ? 'has-error' : '' }}">
-                <label for="main_photo">{{ trans('cruds.client.fields.main_photo') }}</label>
-                <div class="needsclick dropzone" id="main_photo-dropzone">
 
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('main_photo') ? 'has-error' : '' }}">
+                        <label for="main_photo">{{ trans('cruds.client.fields.main_photo') }}</label>
+                        <div class="needsclick dropzone" id="main_photo-dropzone">
+
+                        </div>
+                        @if($errors->has('main_photo'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('main_photo') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.main_photo_helper') }}
+                        </p>
+                    </div>
                 </div>
-                @if($errors->has('main_photo'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('main_photo') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.main_photo_helper') }}
-                </p>
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('client_signature') ? 'has-error' : '' }}">
+                        <label for="client_signature">Client's Signature</label>
+                        <div class="needsclick dropzone" id="client_signature-dropzone">
+
+                        </div>
+                        @if($errors->has('client_signature'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('client_signature') }}
+                        </em>
+                        @endif
+                    </div>
+                </div>
             </div>
+
+            <hr class="my-4" style="border: 2px solid gray">
+
             <div class="form-group {{ $errors->has('gallery') ? 'has-error' : '' }}">
-                <label for="gallery">{{ trans('cruds.client.fields.gallery') }}</label>
+                <label for="gallery">{{ trans('cruds.client.fields.gallery') }} <i>(upto 10 files)</i></label>
                 <div class="needsclick dropzone" id="gallery-dropzone">
 
                 </div>
@@ -168,11 +117,51 @@
                     {{ trans('cruds.client.fields.gallery_helper') }}
                 </p>
             </div>
+
+            <hr class="my-5" style="border: 1px solid gray">
+
+            @include('admin.clients.formparts.neighbour')
+
+            <hr class="my-5" style="border: 1px solid gray">
+
+            @can('client_delete')
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group {{ $errors->has('verified_by') ? 'has-error' : '' }}">
+                        <label for="verified_by"
+                            style="color: red"><b>{{ trans('cruds.client.fields.verified_by') }}*</b></label>
+                        <input type="text" id="verified_by" name="verified_by" class="form-control"
+                            value="{{ old('verified_by', isset($client) ? $client->verified_by : '') }}" required>
+                        @if($errors->has('verified_by'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('verified_by') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.verified_by_helper') }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="form-group {{ $errors->has('verified_sign') ? 'has-error' : '' }}">
+                        <label for="verified_sign" style="color: red"><b>Verification Officer Signature</b></label>
+                        <div class="needsclick dropzone" id="verified_sign-dropzone">
+
+                        </div>
+                        @if($errors->has('verified_sign'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('verified_sign') }}
+                        </em>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group {{ $errors->has('is_verified') ? 'has-error' : '' }}">
                 <label for="is_verified">{{ trans('cruds.client.fields.is_verified') }}</label>
                 <input name="is_verified" type="hidden" value="0">
-                <input value="1" type="checkbox" id="is_verified" name="is_verified"
-                    {{ (isset($client) && $client->is_verified) || old('is_verified', 0) === 1 ? 'checked' : '' }}>
+                <input value="1" type="checkbox" id="is_verified" checked name="is_verified"
+                    {{ old('is_verified', 0) == 1 ? 'checked' : '' }}>
                 @if($errors->has('is_verified'))
                 <em class="invalid-feedback">
                     {{ $errors->first('is_verified') }}
@@ -182,11 +171,12 @@
                     {{ trans('cruds.client.fields.is_verified_helper') }}
                 </p>
             </div>
+            @endcan
+
             <div>
-                <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+                <input class="btn btn-danger px-4" type="submit" value="{{ trans('global.save') }} Registration">
             </div>
         </form>
-
 
     </div>
 </div>
@@ -247,12 +237,123 @@
     }
 }
 </script>
+
+<script>
+    Dropzone.options.clientSignatureDropzone = {
+    url: '{{ route('admin.clients.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="client_signature"]').remove()
+      $('form').append('<input type="hidden" name="client_signature" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="client_signature"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($client) && $client->client_signature)
+      var file = {!! json_encode($client->client_signature) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, '{{ $client->client_signature->getUrl('thumb') }}')
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="client_signature" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+</script>
+<script>
+    Dropzone.options.verifiedSignDropzone = {
+    url: '{{ route('admin.clients.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="verified_sign"]').remove()
+      $('form').append('<input type="hidden" name="verified_sign" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="verified_sign"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($client) && $client->verified_sign)
+      var file = {!! json_encode($client->verified_sign) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, '{{ $client->verified_sign->getUrl('thumb') }}')
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="verified_sign" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+</script>
+
 <script>
     var uploadedGalleryMap = {}
 Dropzone.options.galleryDropzone = {
     url: '{{ route('admin.clients.storeMedia') }}',
     maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 10,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
