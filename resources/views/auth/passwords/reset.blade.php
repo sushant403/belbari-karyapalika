@@ -1,19 +1,19 @@
-@extends('layouts.mainTable')
+@extends('layouts.front')
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="card-group">
             <div class="card p-4">
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.request') }}">
                         {{ csrf_field() }}
-                        {{-- <h4>
+                        {{-- <h1>
                             <div class="login-logo">
                                 <a href="#">
                                     {{ trans('panel.site_title') }}
                                 </a>
                             </div>
-                        </h4> --}}
+                        </h1> --}}
                         <p class="text-muted"></p>
                         <div>
                             <input name="token" value="{{ $token }}" type="hidden">

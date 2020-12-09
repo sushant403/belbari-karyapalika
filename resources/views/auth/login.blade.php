@@ -1,14 +1,13 @@
-@extends('layouts.mainTable')
+@extends('layouts.front')
 @section('content')
-<link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="card-group">
             <div class="card p-4">
                 <div class="card-body">
-                    @if(\Session::has('message'))
+                    @if(session()->has('message'))
                     <p class="alert alert-info">
-                        {{ \Session::get('message') }}
+                        {{ session()->get('message') }}
                     </p>
                     @endif
                     <form method="POST" action="{{ route('login') }}">
@@ -34,7 +33,7 @@
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             </div>
                             <input name="password" type="password"
                                 class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required
@@ -63,7 +62,7 @@
                                 </button>
                             </div>
                             <div class="col-6 text-right">
-                                <a class="btn btn-neutral px-2" href="{{ route('password.request') }}">
+                                <a class="btn btn-link px-2" href="{{ route('password.request') }}">
                                     {{ trans('global.forgot_password') }}
                                 </a>
 

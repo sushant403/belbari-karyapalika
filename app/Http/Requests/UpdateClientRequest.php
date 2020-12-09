@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\User;
+use App\Client;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class UpdateUserRequest extends FormRequest
+class UpdateClientRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('client_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -19,19 +19,17 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => [
+            'name'           => [
                 'required',
             ],
-            'email'   => [
+            'registration'           => [
                 'required',
-                'unique:users,email,' . request()->route('user')->id,
             ],
-            'roles.*' => [
-                'integer',
-            ],
-            'roles'   => [
+            'address'        => [
                 'required',
-                'array',
+            ],
+            'phone'        => [
+                'required',
             ],
         ];
     }

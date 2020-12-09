@@ -2,14 +2,25 @@
     <nav class="sidebar-nav">
 
         <ul class="nav">
-            @can('company_access')
+            @can('client_access')
             <li class="nav-item">
-                <a href="{{ route("admin.companies.index") }}"
-                    class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
+                <a href="{{ route("admin.clients.index") }}"
+                    class="nav-link {{ request()->is('admin/clients') || request()->is('admin/clients/*') ? 'active' : '' }}">
                     <i class="fa-fw fas fa-cogs nav-icon">
 
                     </i>
-                    {{ trans('cruds.company.title') }}
+                    {{ trans('cruds.client.title') }}
+                </a>
+            </li>
+            @endcan
+            @can('user_access')
+            <li class="nav-item">
+                <a href="{{ route("admin.users.index") }}"
+                    class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-user nav-icon">
+
+                    </i>
+                    {{ trans('cruds.user.title') }}
                 </a>
             </li>
             @endcan
@@ -19,7 +30,7 @@
                     <i class="fa-fw fas fa-users nav-icon">
 
                     </i>
-                    {{ trans('cruds.userManagement.title') }}
+                    Permission Settings
                 </a>
                 <ul class="nav-dropdown-items">
                     @can('permission_access')
@@ -41,17 +52,6 @@
 
                             </i>
                             {{ trans('cruds.role.title') }}
-                        </a>
-                    </li>
-                    @endcan
-                    @can('user_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.users.index") }}"
-                            class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                            <i class="fa-fw fas fa-user nav-icon">
-
-                            </i>
-                            {{ trans('cruds.user.title') }}
                         </a>
                     </li>
                     @endcan

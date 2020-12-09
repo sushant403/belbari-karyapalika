@@ -10,13 +10,15 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Users
     Route::apiResource('users', 'UsersApiController');
 
-    // Cities
-    Route::apiResource('cities', 'CitiesApiController');
+    // Locations
+    Route::post('locations/media', 'LocationsApiController@storeMedia')->name('locations.storeMedia');
+    Route::apiResource('locations', 'LocationsApiController');
 
-    // Categories
-    Route::apiResource('categories', 'CategoriesApiController');
+    // Event Types
+    Route::post('event-types/media', 'EventTypesApiController@storeMedia')->name('event-types.storeMedia');
+    Route::apiResource('event-types', 'EventTypesApiController');
 
-    // Companies
-    Route::post('companies/media', 'CompaniesApiController@storeMedia')->name('companies.storeMedia');
-    Route::apiResource('companies', 'CompaniesApiController');
+    // clients
+    Route::post('clients/media', 'clientsApiController@storeMedia')->name('clients.storeMedia');
+    Route::apiResource('clients', 'clientsApiController');
 });

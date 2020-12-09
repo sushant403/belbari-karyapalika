@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Belbari Nagar Karyapalika',
+    'site_title' => 'Nagar Karyapalika',
 ];

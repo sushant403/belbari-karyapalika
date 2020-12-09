@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\EventType;
+use App\Location;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,11 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->composer('*', function($view) {
-        //     $view->with('search_categories', \App\Category::all());
-        //     $view->with('categories_all', \App\Category::all());
-        //     $view->with('search_cities', \App\City::all());
-
-        // });
+        View::composer('*', function ($view) {
+        });
     }
 }
