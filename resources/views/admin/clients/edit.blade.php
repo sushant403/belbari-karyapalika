@@ -16,57 +16,71 @@
         <form action="{{ route("admin.clients.update", [$client->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="form-group {{ $errors->has('registration') ? 'has-error' : '' }}">
-                <label for="registration">{{ trans('cruds.client.fields.registration') }} Number*</label>
-                <input type="text" id="registration" name="registration" class="form-control"
-                    value="{{ old('registration', isset($client) ? $client->registration : '') }}" required>
-                @if($errors->has('registration'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('registration') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.registration_helper') }}
-                </p>
+            <h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#1 Client's Information</h5>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('registration') ? 'has-error' : '' }}">
+                        <label for="registration">{{ trans('cruds.client.fields.registration') }} Number*</label>
+                        <input type="text" id="registration" name="registration" class="form-control"
+                            value="{{ old('registration', isset($client) ? $client->registration : '') }}" required>
+                        @if($errors->has('registration'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('registration') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.registration_helper') }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                        <label for="name">{{ trans('cruds.client.fields.name') }}*</label>
+                        <input type="text" id="name" name="name" class="form-control"
+                            value="{{ old('name', isset($client) ? $client->name : '') }}" required>
+                        @if($errors->has('name'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.name_helper') }}
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('cruds.client.fields.name') }}*</label>
-                <input type="text" id="name" name="name" class="form-control"
-                    value="{{ old('name', isset($client) ? $client->name : '') }}" required>
-                @if($errors->has('name'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('name') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.name_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
-                <label for="address">{{ trans('cruds.client.fields.address') }}*</label>
-                <input type="text" id="address" name="address" class="form-control"
-                    value="{{ old('address', isset($client) ? $client->address : '') }}" required>
-                @if($errors->has('address'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('address') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.address_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-                <label for="phone">{{ trans('cruds.client.fields.phone') }}*</label>
-                <input type="number" id="phone" name="phone" class="form-control"
-                    value="{{ old('phone', isset($client) ? $client->phone : '') }}">
-                @if($errors->has('phone'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('phone') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.phone_helper') }}
-                </p>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                        <label for="address">{{ trans('cruds.client.fields.address') }}*</label>
+                        <input type="text" id="address" name="address" class="form-control"
+                            value="{{ old('address', isset($client) ? $client->address : '') }}" required>
+                        @if($errors->has('address'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('address') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.address_helper') }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                        <label for="phone">{{ trans('cruds.client.fields.phone') }}*</label>
+                        <input type="number" id="phone" name="phone" class="form-control"
+                            value="{{ old('phone', isset($client) ? $client->phone : '') }}">
+                        @if($errors->has('phone'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('phone') }}
+                        </em>
+                        @endif
+                        <p class="helper-block">
+                            {{ trans('cruds.client.fields.phone_helper') }}
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -101,30 +115,19 @@
                 </div>
             </div>
 
-            <hr class="my-4" style="border: 2px solid gray">
+            <hr class="mt-5" style="border: 1px solid gray">
 
-            <div class="form-group {{ $errors->has('gallery') ? 'has-error' : '' }}">
-                <label for="gallery">{{ trans('cruds.client.fields.gallery') }} <i>(upto 10 files)</i></label>
-                <div class="needsclick dropzone" id="gallery-dropzone">
+            @include('admin.clients.formparts.documents')
 
-                </div>
-                @if($errors->has('gallery'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('gallery') }}
-                </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.client.fields.gallery_helper') }}
-                </p>
-            </div>
-
-            <hr class="my-5" style="border: 1px solid gray">
+            <hr class="mt-5" style="border: 1px solid gray">
 
             @include('admin.clients.formparts.neighbour')
 
-            <hr class="my-5" style="border: 1px solid gray">
+            <hr class="mt-5" style="border: 1px solid gray">
 
             @can('client_delete')
+            <h5 class="btn btn-dark mb-4" style="font-weight: bolder; cursor:auto">Verification Officer
+                (Authorized Personell)</h5>
             <div class="row">
                 <div class="col-5">
                     <div class="form-group {{ $errors->has('verified_by') ? 'has-error' : '' }}">
@@ -347,66 +350,8 @@
 }
 </script>
 
-<script>
-    var uploadedGalleryMap = {}
-Dropzone.options.galleryDropzone = {
-    url: '{{ route('admin.clients.storeMedia') }}',
-    maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    maxFiles: 10,
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 2,
-      width: 4096,
-      height: 4096
-    },
-    success: function (file, response) {
-      $('form').append('<input type="hidden" name="gallery[]" value="' + response.name + '">')
-      uploadedGalleryMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      console.log(file)
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedGalleryMap[file.name]
-      }
-      $('form').find('input[name="gallery[]"][value="' + name + '"]').remove()
-    },
-    init: function () {
-@if(isset($client) && $client->gallery)
-      var files =
-        {!! json_encode($client->gallery) !!}
-          for (var i in files) {
-          var file = files[i]
-          this.options.addedfile.call(this, file)
-          this.options.thumbnail.call(this, file, file.url)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="gallery[]" value="' + file.file_name + '">')
-        }
-@endif
-    },
-     error: function (file, response) {
-         if ($.type(response) === 'string') {
-             var message = response //dropzone sends it's own error messages in string
-         } else {
-             var message = response.errors.file
-         }
-         file.previewElement.classList.add('dz-error')
-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-         _results = []
-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-             node = _ref[_i]
-             _results.push(node.textContent = message)
-         }
+@include('admin.clients.formparts.neighbour_scripts')
 
-         return _results
-     }
-}
-</script>
+@include('admin.clients.formparts.documents_scripts')
+
 @stop

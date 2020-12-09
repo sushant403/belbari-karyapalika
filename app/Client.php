@@ -16,9 +16,17 @@ class Client extends Model implements HasMedia
 
     protected $appends = [
         'gallery',
+        'consultancy',
+        'days_notice',
+        'acceptance1',
+        'acceptance2',
+        'finaldocs',
         'main_photo',
         'client_signature',
         'verified_sign',
+        'neighbour1_sign',
+        'neighbour2_sign',
+        'neighbour3_sign',
     ];
 
     protected $dates = [
@@ -73,6 +81,9 @@ class Client extends Model implements HasMedia
         return $file;
     }
 
+
+    //=======================================================================  
+    //documents
     public function getGalleryAttribute()
     {
         $files = $this->getMedia('gallery');
@@ -83,7 +94,95 @@ class Client extends Model implements HasMedia
 
         return $files;
     }
+    public function getConsultancyAttribute()
+    {
+        $files = $this->getMedia('consultancy');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+        });
 
+        return $files;
+    }
+    public function getDaysNoticeAttribute()
+    {
+        $files = $this->getMedia('days_notice');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+        });
+
+        return $files;
+    }
+    public function getAcceptance1Attribute()
+    {
+        $files = $this->getMedia('acceptance1');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+        });
+
+        return $files;
+    }
+    public function getAcceptance2Attribute()
+    {
+        $files = $this->getMedia('acceptance2');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+        });
+
+        return $files;
+    }
+    public function getFinaldocsAttribute()
+    {
+        $files = $this->getMedia('finaldocs');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+        });
+
+        return $files;
+    }
+
+
+    //=======================================================================  
+    //neighbours
+    public function getNeighbour1SignAttribute()
+    {
+        $file = $this->getMedia('neighbour1_sign')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
+    }
+    public function getNeighbour2SignAttribute()
+    {
+        $file = $this->getMedia('neighbour2_sign')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
+    }
+    public function getNeighbour3SignAttribute()
+    {
+        $file = $this->getMedia('neighbour3_sign')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
+    }
+
+    //==========================================================================
     //verification officer
     public function getVerifiedSignAttribute()
     {

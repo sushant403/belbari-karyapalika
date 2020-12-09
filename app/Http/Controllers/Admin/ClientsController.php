@@ -39,13 +39,39 @@ class ClientsController extends Controller
         if ($request->input('main_photo', false)) {
             $client->addMedia(storage_path('tmp/uploads/' . $request->input('main_photo')))->toMediaCollection('main_photo');
         }
-
         if ($request->input('client_signature', false)) {
             $client->addMedia(storage_path('tmp/uploads/' . $request->input('client_signature')))->toMediaCollection('client_signature');
         }
 
+        //documents
         foreach ($request->input('gallery', []) as $file) {
             $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('gallery');
+        }
+        foreach ($request->input('consultancy', []) as $file) {
+            $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('consultancy');
+        }
+        foreach ($request->input('days_notice', []) as $file) {
+            $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('days_notice');
+        }
+        foreach ($request->input('acceptance1', []) as $file) {
+            $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('acceptance1');
+        }
+        foreach ($request->input('acceptance2', []) as $file) {
+            $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('acceptance2');
+        }
+        foreach ($request->input('finaldocs', []) as $file) {
+            $client->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('finaldocs');
+        }
+
+        //neighbours
+        if ($request->input('neighbour1_sign', false)) {
+            $client->addMedia(storage_path('tmp/uploads/' . $request->input('neighbour1_sign')))->toMediaCollection('neighbour1_sign');
+        }
+        if ($request->input('neighbour2_sign', false)) {
+            $client->addMedia(storage_path('tmp/uploads/' . $request->input('neighbour2_sign')))->toMediaCollection('neighbour2_sign');
+        }
+        if ($request->input('neighbour3_sign', false)) {
+            $client->addMedia(storage_path('tmp/uploads/' . $request->input('neighbour3_sign')))->toMediaCollection('neighbour3_sign');
         }
 
         //verification officer

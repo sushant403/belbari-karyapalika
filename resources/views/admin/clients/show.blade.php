@@ -82,8 +82,107 @@
                             @foreach($client->gallery as $key => $media)
                             <a href="{{ $media->getUrl() }}" target="_blank">
                                 <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
-                            </a>
+                            </a>&nbsp;&nbsp;
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Consultancy Documents
+                        </th>
+                        <td>
+                            @foreach($client->consultancy as $key => $media)
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>&nbsp;&nbsp;
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            15 Days Notice
+                        </th>
+                        <td>
+                            @foreach($client->days_notice as $key => $media)
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>&nbsp;&nbsp;
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            First Acceptance Letter
+                        </th>
+                        <td>
+                            @foreach($client->acceptance1 as $key => $media)
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>&nbsp;&nbsp;
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Second Acceptance Letter
+                        </th>
+                        <td>
+                            @foreach($client->acceptance2 as $key => $media)
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>&nbsp;&nbsp;
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Final Documentations
+                        </th>
+                        <td>
+                            @foreach($client->finaldocs as $key => $media)
+                            <a href="{{ $media->getUrl() }}" target="_blank">
+                                <img src="{{ $media->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>&nbsp;&nbsp;
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Neighbour One's Details
+                        </th>
+                        <td>
+                            {{ $client->neighbour1 }} &nbsp;&nbsp;&nbsp;&nbsp;
+                            @if($client->neighbour1_sign)
+                            <a href="{{ $client->neighbour1_sign->getUrl() }}" target="_blank">
+                                <img src="{{ $client->neighbour1_sign->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Neighbour Two's Details
+                        </th>
+                        <td>
+                            {{ $client->neighbour2 }} &nbsp;&nbsp;&nbsp;&nbsp;
+                            @if($client->neighbour2_sign)
+                            <a href="{{ $client->neighbour2_sign->getUrl() }}" target="_blank">
+                                <img src="{{ $client->neighbour2_sign->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Neighbour Three's Details
+                        </th>
+                        <td>
+                            {{ $client->neighbour3 }} &nbsp;&nbsp;&nbsp;&nbsp;
+                            @if($client->neighbour3_sign)
+                            <a href="{{ $client->neighbour3_sign->getUrl() }}" target="_blank">
+                                <img src="{{ $client->neighbour3_sign->getUrl('thumb') }}" width="50px" height="50px">
+                            </a>
+                            @endif
                         </td>
                     </tr>
                     <tr>

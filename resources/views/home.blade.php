@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <ul class="useful-link">
                             <li>
-                                <a href="/admin/companies"><i class="fa fa-adjust"></i>&nbsp;Advanced Search</a>
+                                <a href="/admin/clients"><i class="fa fa-adjust"></i>&nbsp;Advanced Search</a>
                             </li>
                             <li>
                                 <a href="/admin/clients/create"><i class="fa fa-anchor"></i>&nbsp;Add New
