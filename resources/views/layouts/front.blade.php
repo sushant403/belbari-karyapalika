@@ -50,7 +50,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                    <div class="col-lg-6 col-md-6 col-sm-6 text-right mt-4">
                         <div class="right-box text-right">
                             <ul>
                                 @guest

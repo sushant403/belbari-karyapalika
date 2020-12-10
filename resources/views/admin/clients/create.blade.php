@@ -17,7 +17,7 @@
             @csrf
             <h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#1 Client's Information</h5>
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('registration') ? 'has-error' : '' }}">
                         <label for="registration">{{ trans('cruds.client.fields.registration') }} Number*</label>
                         <input type="text" id="registration" name="registration" class="form-control"
@@ -32,7 +32,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label for="name">{{ trans('cruds.client.fields.name') }}*</label>
                         <input type="text" id="name" name="name" class="form-control"
@@ -50,7 +50,7 @@
             </div>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
                         <label for="address">{{ trans('cruds.client.fields.address') }}*</label>
                         <input type="text" id="address" name="address" class="form-control"
@@ -65,7 +65,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
                         <label for="phone">{{ trans('cruds.client.fields.phone') }}*</label>
                         <input type="number" id="phone" name="phone" class="form-control"
@@ -83,7 +83,7 @@
             </div>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('main_photo') ? 'has-error' : '' }}">
                         <label for="main_photo">{{ trans('cruds.client.fields.main_photo') }}</label>
                         <div class="needsclick dropzone" id="main_photo-dropzone">
@@ -99,7 +99,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group {{ $errors->has('client_signature') ? 'has-error' : '' }}">
                         <label for="client_signature">Client's Signature</label>
                         <div class="needsclick dropzone" id="client_signature-dropzone">
@@ -128,7 +128,7 @@
             <h5 class="btn btn-dark mb-4" style="font-weight: bolder; cursor:auto">Verification Officer
                 (Authorized Personell)</h5>
             <div class="row">
-                <div class="col-5">
+                <div class="col-12 col-md-5">
                     <div class="form-group {{ $errors->has('verified_by') ? 'has-error' : '' }}">
                         <label for="verified_by"
                             style="color: red"><b>{{ trans('cruds.client.fields.verified_by') }}*</b></label>
@@ -144,7 +144,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <div class="form-group {{ $errors->has('verified_sign') ? 'has-error' : '' }}">
                         <label for="verified_sign" style="color: red"><b>Verification Officer Signature</b></label>
                         <div class="needsclick dropzone" id="verified_sign-dropzone">

@@ -1,6 +1,6 @@
-<h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#2 Client's Documents Information (Multiple
-    Photo
-    Uploads)</h5>
+<div class="row">
+    <h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#2 Client's Documents Information</h5>
+</div>
 
 <div class="row py-2">
     <div class="col-12">
@@ -22,7 +22,7 @@
 </div>
 
 <div class="row py-2">
-    <div class="col-7">
+    <div class="col-lg-7 col-12">
         <div class="form-group {{ $errors->has('consultancy') ? 'has-error' : '' }}">
             <label for="consultancy">Consultancy Documents <i>(upto 5 files)</i></label>
             <div class="needsclick dropzone" id="consultancy-dropzone">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="col-5">
+    <div class="col-lg-5 col-12">
         <div class="form-group {{ $errors->has('days_notice') ? 'has-error' : '' }}">
             <label for="days_notice">15 Days Notice <i>(upto 2 files)</i></label>
             <div class="needsclick dropzone" id="days_notice-dropzone">
@@ -52,7 +52,7 @@
 </div>
 
 <div class="row py-2">
-    <div class="col-6">
+    <div class="col-lg-6 col-12">
         <div class="form-group {{ $errors->has('acceptance1') ? 'has-error' : '' }}">
             <label for="acceptance1">First Acceptance Letter <i>(upto 2 files)</i></label>
             <div class="needsclick dropzone" id="acceptance1-dropzone">
@@ -65,7 +65,7 @@
             @endif
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-lg-6 col-12">
         <div class="form-group {{ $errors->has('acceptance2') ? 'has-error' : '' }}">
             <label for="acceptance2">Second Acceptance Letter <i>(upto 2 files)</i></label>
             <div class="needsclick dropzone" id="acceptance2-dropzone">

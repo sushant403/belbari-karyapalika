@@ -1,8 +1,7 @@
-<h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#3 Client's Neighbours Details (Name and
-    Signature)</h5>
+<h5 class="btn btn-secondary mb-4" style="font-weight: bolder; cursor:auto">#3 Client's Neighbours Details</h5>
 
 <div class="row py-2">
-    <div class="col-4">
+    <div class="col-md-4 col-6">
         <div class="form-group {{ $errors->has('neighbour1') ? 'has-error' : '' }}">
             <label for="neighbour1">Neighbour One's Name</label>
             <input type="text" id="neighbour1" name="neighbour1" class="form-control"
@@ -26,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-4 col-6">
         <div class="form-group {{ $errors->has('neighbour2') ? 'has-error' : '' }}">
             <label for="neighbour2">Neighbour Two's Name</label>
             <input type="text" id="neighbour2" name="neighbour2" class="form-control"
@@ -50,7 +49,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-4 col-6">
         <div class="form-group {{ $errors->has('neighbour3') ? 'has-error' : '' }}">
             <label for="neighbour3">Neighbour Three's Name</label>
             <input type="text" id="neighbour3" name="neighbour3" class="form-control"

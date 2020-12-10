@@ -141,11 +141,11 @@
     }
     .right-box {
         width: auto;
-        float: right;
+        /* float: right; */
         position: absolute;
         z-index: 999;
-        right: 0;
-        bottom: -32px;
+        /* right: 0; */
+        /* bottom: -32px; */
     }
     .right-box form {
         display: none;
